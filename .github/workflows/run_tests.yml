@@ -45,15 +45,15 @@ jobs:
           path: _site
           retention-days: 1
 
-publish-report:
-  runs-on: ubuntu-latest
-  needs: generate-report
-  name: Report publication
-  steps:
-    - name: Download all workflow run artifacts
-      uses: actions/download-artifact@v3
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v2
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1.2.9
+  publish-report:
+    runs-on: ubuntu-latest
+    needs: generate-report
+    name: Report publication
+    steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1.2.9
