@@ -7,7 +7,7 @@
 1. Клонируйте репозиторий:
 
 ```
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/d-timoshin/test_run.git
 ```
 
 2. Установите зависимости:
