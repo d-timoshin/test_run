@@ -62,3 +62,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1.2.9
+      - name: send notification
+        run: |
+          curl --location 'https://api.telegram.org/bot${{ secrets.TG }}/sendMessage' --header 'Content-Type: application/json' --data '{"chat_id": 5445501175, "text": "Tests passed. Report: https://d-timoshin.github.io/test_run/"}'
