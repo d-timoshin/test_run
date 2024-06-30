@@ -35,7 +35,7 @@ def test_geely_main_page(browser):
     btn = browser.find_element(By.XPATH, '//button[@type="submit"]').click()
 
 
-def test_geely_page(browser):
+def test_geely_test_drive(browser):
     browser.get("https://www.geely-motors.com/forbuyers/test-drive")
     input__name = browser.find_element(By.XPATH, '//div[@class="nice-select   "]').click()
     input__name = browser.find_element(By.XPATH, '//li[@data-value="802"]').click()
@@ -54,7 +54,24 @@ def test_geely_page(browser):
 
     btn = browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
 
-   
+def test_geely_servicebooking(browser):
+    browser.get("https://www.geely-motors.com/for-owners/maintain-and-repair/servicebooking")
+    input__name = browser.find_element(By.XPATH, '//div[@class="nice-select   "]').click()
+    input__name = browser.find_element(By.XPATH, '//li[@data-value="138"]').click()
+
+
+    input__name = browser.find_element(By.XPATH, '//*[@id="firstName"]').send_keys("servicebooking")
+    input__phone = browser.find_element(By.XPATH, '//*[@id="phone"]').click()
+    input__phone = browser.find_element(By.XPATH, '//*[@id="phone"]').send_keys(1111111111)
+    input__email = browser.find_element(By.XPATH, '//*[@id="email"]').send_keys("prtrol@prtrol.prtrol")
+
+    check__phone = browser.find_element(By.XPATH, '(//label[@class="checkbox"])[1]').click()
+
+    check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[1]').click()
+
+    check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]').click()
+
+    btn = browser.find_element(By.XPATH, '(//button[@type="submit"])[]').click()
 
 
         
