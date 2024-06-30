@@ -64,4 +64,4 @@ jobs:
         uses: actions/deploy-pages@v1.2.9
       - name: send notification
         run: |
-          curl --location 'https://api.telegram.org/bot${{ secrets.TG }}/sendMessage' --header 'Content-Type: application/json' --data '{"chat_id": 5445501175, "text": "\u1F4CA Результаты автотестирования\n\n\u2705 Тесты выполнены\n\n\u1F517 Подробный отчет доступен по ссылке:\n https://d-timoshin.github.io/test_run/\n\n\u1F468\u200D\u1F4BB При возникновении вопросов обращайтесь к команде QA"}'
+          curl --location 'https://api.telegram.org/bot${{ secrets.TG }}/sendMessage' --header 'Content-Type: application/json' --data '{"chat_id": 5445501175, "text": " \u1F4CA Результаты автотестирования\n\n\u2705 Тесты выполнены\n\n\u1F517 Подробный отчет доступен по ссылке:\n https://d-timoshin.github.io/test_run/\n\n\u1F468\u200D\u1F4BB При возникновении вопросов обращайтесь к команде QA"}'
