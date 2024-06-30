@@ -71,7 +71,7 @@ def test_geely_servicebooking(browser):
 
     check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]').click()
 
-    btn = browser.find_element(By.XPATH, '(//button[@type="submit"])[]').click()
+    btn = browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
 
 
         
