@@ -34,7 +34,6 @@ def test_geely_main_page(browser):
 
     btn = browser.find_element(By.XPATH, '//button[@type="submit"]').click()
 
-    DELETE_BUTTON = (By.XPATH, '(//button[@class="primary-button blue auto noicon alert__close"])[1]').click()
 
 def test_geely_page(browser):
     browser.get("https://www.geely-motors.com/forbuyers/test-drive")
