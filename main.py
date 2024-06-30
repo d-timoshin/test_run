@@ -19,21 +19,43 @@ def test_dzen_page(browser):
     assert browser.title == "Дзен", "Страница не открылась"
     print("Открыто")"""
 
+def test_geely_main_page(browser):
+
+    browser.get("https://www.geely-motors.com/")
+
+
+    input__name = browser.find_element(By.XPATH, '//*[@id="firstName"]').send_keys("news")
+
+    input__email = browser.find_element(By.XPATH, '//*[@id="email"]').send_keys("test@test.test")
+
+    check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[1]').click()
+
+    check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]').click()
+
+    btn = browser.find_element(By.XPATH, '//button[@type="submit"]').click()
+
+    DELETE_BUTTON = (By.XPATH, '(//button[@class="primary-button blue auto noicon alert__close"])[1]').click()
+
 def test_geely_page(browser):
-
-    browser.get("https://www.geely-motors.com/forbuyers/specialoffer/maximum-benefits")
-
+    browser.get("https://www.geely-motors.com/forbuyers/test-drive")
     input__name = browser.find_element(By.XPATH, '//div[@class="nice-select   "]').click()
     input__name = browser.find_element(By.XPATH, '//li[@data-value="802"]').click()
 
-    input__name = browser.find_element(By.XPATH, '(//*[@id="firstName"])[1]').send_keys("maximum-benefits")
+
+    input__name = browser.find_element(By.XPATH, '//*[@id="firstName"]').send_keys("test-drive")
+
     input__phone = browser.find_element(By.XPATH, '//*[@id="phone"]').click()
     input__phone = browser.find_element(By.XPATH, '//*[@id="phone"]').send_keys(1111111111)
-    input__email = browser.find_element(By.XPATH, '//*[@id="email"]').send_keys("test@test.test")
-    input__dealer = browser.find_element(By.XPATH, '//input[@class="js-dealer-open"]').click()
 
-    check__phone = browser.find_element(By.XPATH, '(//i)[23]').click()
+    check__phone = browser.find_element(By.XPATH, '(//label[@class="checkbox"])[1]').click()
 
-    check__phone = browser.find_element(By.XPATH, '//button[@class="primary-button black auto noicon js-dealer-choose"]').click()
+    check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[1]').click()
 
-    
+    check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]').click()
+
+    btn = browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
+
+   
+
+
+        
