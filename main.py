@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
 import allure
+import logging
 from allure_commons.types import AttachmentType
 from allure_commons._allure import step as allure_step
 
@@ -209,22 +210,47 @@ def test_geely_maximum_benefits(browser):
 """
 
 
-
-
-import logging
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 @allure.feature('Geely Motors Website')
-@allure.story('Get a Quote')
-def test_geely_getaquote(browser):
+@allure.story('Main Page Subscription')
+def test_geely_main_page(browser):
     try:
-        with allure.step("Open Get a Quote page"):
-            browser.get("https://www.geely-motors.com/forbuyers/getaquote")
-            logger.info("Opened Get a Quote page")
+        with allure.step("Open Geely Motors main page"):
+            browser.get("https://www.geely-motors.com/")
+            logger.info("Opened Geely Motors main page")
 
-        # ... остальные шаги теста ...
+        with allure.step("Enter name"):
+            input__name = browser.find_element(By.XPATH, '//*[@id="firstName"]')
+            input__name.send_keys("news")
+            logger.info("Entered name: news")
+
+        with allure.step("Enter email"):
+            input__email = browser.find_element(By.XPATH, '//*[@id="email"]')
+            input__email.send_keys("test@test.test")
+            logger.info("Entered email: test@test.test")
+
+        with allure.step("Check first checkbox"):
+            check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[1]')
+            check__phone.click()
+            logger.info("Checked first checkbox")
+
+        with allure.step("Check second checkbox"):
+            check__phone = browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]')
+            check__phone.click()
+            logger.info("Checked second checkbox")
+
+        with allure.step("Click submit button"):
+            btn = browser.find_element(By.XPATH, '//button[@type="submit"]')
+            btn.click()
+            logger.info("Clicked submit button")
+
+        with allure.step("Wait for and click delete button"):
+            wait = WebDriverWait(browser, 10)
+            DELETE_BUTTON = (By.XPATH, '(//button[@class="primary-button blue auto noicon alert__close"])[1]')
+            wait.until(EC.visibility_of_element_located(DELETE_BUTTON)).click()
+            logger.info("Clicked delete button")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
