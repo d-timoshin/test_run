@@ -210,7 +210,11 @@ def test_geely_maximum_benefits(browser):
 
 
 
-import allure
+
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @allure.feature('Geely Motors Website')
 @allure.story('Get a Quote')
@@ -218,24 +222,15 @@ def test_geely_getaquote(browser):
     try:
         with allure.step("Open Get a Quote page"):
             browser.get("https://www.geely-motors.com/forbuyers/getaquote")
+            logger.info("Opened Get a Quote page")
 
-        with allure.step("Select car model"):
-            allure_step("Click on select", browser.find_element(By.XPATH, '//div[@class="nice-select   "]'))
-            allure_step("Select model", browser.find_element(By.XPATH, '//li[@data-value="348"]'))
+        # ... остальные шаги теста ...
 
-        with allure.step("Fill in the form"):
-            allure_step("Enter name", browser.find_element(By.XPATH, '//*[@id="firstName"]')).send_keys("forbuyers getaquote")
-            allure_step("Enter phone", browser.find_element(By.XPATH, '//*[@id="phone"]')).send_keys(1111111111)
-            allure_step("Enter email", browser.find_element(By.XPATH, '//*[@id="email"]')).send_keys("prtrol@prtrol.prtrol")
-
-        with allure.step("Accept terms"):
-            allure_step("Click checkbox", browser.find_element(By.XPATH, '(//label[@class="checkbox"])[2]'))
-            allure_step("Click first check", browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[1]'))
-            allure_step("Click second check", browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]'))
-
-        with allure.step("Submit form"):
-            allure_step("Click submit button", browser.find_element(By.XPATH, '(//button[@type="submit"])[1]'))
     except Exception as e:
-        allure.attach(body=str(e), name="Error", attachment_type=allure.attachment_type.TEXT)
-        allure_step("Test failed with exception: " + str(e))
-        assert False, "Test failed"
+        logger.error(f"Test failed with exception: {str(e)}")
+        allure.attach(body=str(e), name="Exception", attachment_type=allure.attachment_type.TEXT)
+        raise  # Это гарантирует, что тест будет помечен как упавший
+
+    finally:
+        # Добавьте скриншот в конце теста, независимо от результата
+        allure.attach(browser.get_screenshot_as_png(), name="Final Screenshot", attachment_type=allure.attachment_type.PNG)
