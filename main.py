@@ -260,3 +260,60 @@ def test_geely_main_page(browser):
     finally:
         # Добавьте скриншот в конце теста, независимо от результата
         allure.attach(browser.get_screenshot_as_png(), name="Final Screenshot", attachment_type=allure.attachment_type.PNG)
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+@allure.feature('Geely Motors Website')
+@allure.story('Test Drive')
+def test_geely_test_drive(browser):
+    try:
+        with allure.step("Open Test Drive page"):
+            browser.get("https://www.geely-motors.com/forbuyers/test-drive")
+            logger.info("Opened Test Drive page")
+
+        with allure.step("Select car model"):
+            browser.find_element(By.XPATH, '//div[@class="nice-select   "]').click()
+            browser.find_element(By.XPATH, '//li[@data-value="802"]').click()
+            logger.info("Selected car model")
+
+        with allure.step("Enter name"):
+            browser.find_element(By.XPATH, '//*[@id="firstName"]').send_keys("test-drive")
+            logger.info("Entered name: test-drive")
+
+        with allure.step("Enter phone number"):
+            phone_input = browser.find_element(By.XPATH, '//*[@id="phone"]')
+            phone_input.click()
+            phone_input.send_keys(1111111111)
+            logger.info("Entered phone number: 1111111111")
+
+        with allure.step("Check first checkbox"):
+            browser.find_element(By.XPATH, '(//label[@class="checkbox"])[1]').click()
+            logger.info("Checked first checkbox")
+
+        with allure.step("Check second checkbox"):
+            browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[1]').click()
+            logger.info("Checked second checkbox")
+
+        with allure.step("Check third checkbox"):
+            browser.find_element(By.XPATH, '(//i[@class="fa fa-check"])[2]').click()
+            logger.info("Checked third checkbox")
+
+        with allure.step("Submit form"):
+            browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
+            logger.info("Submitted form")
+
+        with allure.step("Wait for confirmation button"):
+            wait = WebDriverWait(browser, 10)
+            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
+            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
+            logger.info("Confirmation button is visible")
+
+    except Exception as e:
+        logger.error(f"Test failed with exception: {str(e)}")
+        allure.attach(body=str(e), name="Exception", attachment_type=allure.attachment_type.TEXT)
+        raise  # Это гарантирует, что тест будет помечен как упавший
+
+    finally:
+        # Добавьте скриншот в конце теста, независимо от результата
+        allure.attach(browser.get_screenshot_as_png(), name="Final Screenshot", attachment_type=allure.attachment_type.PNG)
