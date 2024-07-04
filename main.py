@@ -39,7 +39,7 @@ def test_geely_main_page(browser):
             logger.info("Entered name: news")
 
         with allure.step("Enter email"):
-            input__email = browser.find_element(By.XPATH, '//*[@id="email"]')
+            input__email = browser.find_element(By.XPATH, '//*[@id="emai"]')
             input__email.send_keys("test@test.test")
             logger.info("Entered email: test@test.test")
 
