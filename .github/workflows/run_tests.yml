@@ -2,8 +2,7 @@ name: Automated tests
 
 on:
   push:
-  schedule:
-    - cron: '0 0 * * 0'  # Каждое воскресенье в 00:00 UTC
+  
 
 permissions:
   contents: read
