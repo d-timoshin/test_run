@@ -34,7 +34,7 @@ def test_geely_main_page(browser):
             logger.info("Opened Geely Motors main page")
 
         with allure.step("Enter name"):
-            input__name = browser.find_element(By.XPATH, '//*[@id="firstNam"]')
+            input__name = browser.find_element(By.XPATH, '//*[@id="firstName"]')
             input__name.send_keys("news")
             logger.info("Entered name: news")
 
