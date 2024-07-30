@@ -64,12 +64,6 @@ def test_geely_main_page(browser):
             wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
             logger.info("Сообщение об успешной отправке заявки видимо")
 
-        with allure.step("Wait for and click delete button"):
-            wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '(//button[@class="primary-button blue auto noicon alert__close"])[1]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON)).click()
-            logger.info("Clicked delete button")
-
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
         allure.attach(body=str(e), name="Exception", attachment_type=allure.attachment_type.TEXT)
@@ -121,15 +115,9 @@ def test_geely_test_drive(browser):
 
         with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявк успешно отправлена!"]')
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
             wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
             logger.info("Сообщение об успешной отправке заявки видимо")
-
-        with allure.step("Wait for confirmation button"):
-            wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -178,11 +166,11 @@ def test_geely_servicebooking(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation button"):
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -227,11 +215,11 @@ def test_geely_getaquote(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation button"):
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -272,11 +260,11 @@ def test_geely_getaquote(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation"):
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -316,11 +304,11 @@ def test_geely_customer_support(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation"):
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -360,11 +348,11 @@ def test_geely_tradeinpolicy(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation"):
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -404,11 +392,11 @@ def test_geely_leasing(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation"):
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
             wait = WebDriverWait(browser, 10)
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
@@ -456,10 +444,11 @@ def test_geely_maximum_benefits(browser):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
 
-        with allure.step("Wait for confirmation"):
-            DELETE_BUTTON = (By.XPATH, '//a[@class="gradient-button button1 black"]')
-            wait.until(EC.visibility_of_element_located(DELETE_BUTTON))
-            logger.info("Confirmation button is visible")
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
+            wait = WebDriverWait(browser, 10)
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
     except Exception as e:
         logger.error(f"Test failed with exception: {str(e)}")
