@@ -58,6 +58,12 @@ def test_geely_main_page(browser):
             btn.click()
             logger.info("Clicked submit button")
 
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
+            wait = WebDriverWait(browser, 10)
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявка успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
+
         with allure.step("Wait for and click delete button"):
             wait = WebDriverWait(browser, 10)
             DELETE_BUTTON = (By.XPATH, '(//button[@class="primary-button blue auto noicon alert__close"])[1]')
@@ -112,6 +118,12 @@ def test_geely_test_drive(browser):
         with allure.step("Submit form"):
             browser.find_element(By.XPATH, '(//button[@type="submit"])[1]').click()
             logger.info("Submitted form")
+
+        with allure.step("Проверка видимости сообщения об успешной отправке заявки"):
+            wait = WebDriverWait(browser, 10)
+            SUCCESS_MESSAGE = (By.XPATH, '//span[text()="Заявк успешно отправлена!"]')
+            wait.until(EC.visibility_of_element_located(SUCCESS_MESSAGE))
+            logger.info("Сообщение об успешной отправке заявки видимо")
 
         with allure.step("Wait for confirmation button"):
             wait = WebDriverWait(browser, 10)
